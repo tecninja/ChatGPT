@@ -1,9 +1,11 @@
 import openai
 
+# Pega a chave de api dentro do arquivo txt
 with open("key.txt", "r") as key:
     chave = key.readlines()[0]
 
 
+# Classe responsável por conctar ao chatGPT
 class ChatGPT:
     
     
