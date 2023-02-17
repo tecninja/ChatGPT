@@ -12,7 +12,30 @@ class ChatGPT:
     openai.api_key = chave
     
     def __init__(self) -> None:
-        pass
+        while True:
+            print('-'*30)
+            print('ChatGPT\n')
+            response = input(
+                "Perguntar: Digite 1\n\
+Sair: Digite 0\n\
+                \nSua Reposta: "
+                ).strip()
+            
+            if response == '0':
+                print('\nChat encerrado!')
+                break
+            elif response == '1':
+                try:
+                    responseChatGPT = self.buscar()
+                except Exception as e:
+                    print(f'ERRO: {e}')
+                    print('Tente novamente!')
+                else:
+                    print(f"\nR: {responseChatGPT}\n")
+            else:
+                print(
+                    'Opção inválida!\n'
+                )
 
     def buscar(self) -> str:
         
@@ -29,8 +52,10 @@ class ChatGPT:
         return resposta.strip()
 
     def perguntar(self) -> str:
-        pergunta = input('Realize sua pergunta ao ChatGPT: ').lower().strip()
+        pergunta = input(
+            '\nRealize sua pergunta ao ChatGPT: '
+            ).lower().strip()
         return pergunta
 
-if __name__ == "__main__":
-    print(ChatGPT().buscar())
+if __name__ == "__main__":    
+    ChatGPT()
